@@ -1,0 +1,327 @@
+<HTML>
+    <head>
+   
+   <title> Create the sentence!</title>
+    </head>
+    <style>
+   body {
+       display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;;
+            gap: 10px;
+   
+   }
+
+.title {
+grid-row-start: 0;
+grid-row-end: 1;
+grid-column-start: 0;
+grid-column-end: 5;   
+ }
+
+ .letterinput {
+grid-row-start: 1;
+grid-row-end: 3;
+grid-column-start: 0;
+grid-column-end: 1;   
+ }
+
+ .addtoB {
+grid-row-start: 1;
+grid-row-end: 2;
+grid-column-start: 2;
+grid-column-end: 3;     
+ }
+
+ .addtoM {
+grid-row-start: 1;
+grid-row-end: 2;
+grid-column-start: 3;
+grid-column-end: 4;     
+ }
+
+ .addtoE {
+grid-row-start: 1;
+grid-row-end: 2;
+grid-column-start: 4;
+grid-column-end: 5;  
+ }
+
+ .deletefromB {
+grid-row-start: 2;
+grid-row-end: 3;
+grid-column-start: 2;
+grid-column-end: 3;  
+ }
+
+ .deletefromM {
+grid-row-start: 2;
+grid-row-end: 3;
+grid-column-start: 3;
+grid-column-end: 4;  
+ }
+
+ .deletefromE {
+grid-row-start: 2;
+grid-row-end: 3;
+grid-column-start: 4;
+grid-column-end: 5;  
+ }
+   
+.messagecenter {
+grid-row-start: 4;
+grid-row-end: 5;
+grid-column-start: 0;
+grid-column-end: 3;  
+}
+
+.charactercounter {
+grid-row-start: 3;
+grid-row-end: 4;
+grid-column-start: 3;
+grid-column-end: 4; 
+}
+
+.stringsearch {
+grid-row-start: 3;
+grid-row-end: 4;
+grid-column-start: 4;
+grid-column-end: 5;     
+}
+
+
+
+</style>
+<script> 
+var memory = "";
+var b  = 0;
+var c  = ""
+var d = ""
+
+
+
+
+function addtoB() {
+whatTheyTyped = document.getElementById("letterinput").value;
+stringLength = whatTheyTyped.length;
+memory = whatTheyTyped + memory;
+document.getElementById("messagecenter").innerHTML = memory ; 
+
+if (whatTheyTyped.length > 0){
+document.getElementById("addtoB").disable = false
+document.getElementById("addtoM").disable = false
+document.getElementById("addtoE").disable = false
+}
+
+else {
+document.getElementById("addtoB").disable = true
+document.getElementById("addtoM").diable = true
+document.getElementById("addtoE").disable = true
+
+
+}
+
+}
+
+
+function addtoM(){
+whatTheyTyped = document.getElementById("letterinput").value;
+stringLength = whatTheyTyped.lenght;
+memory = whatTheyTyped + memory;
+document.getElementById("messagecenter").innerHTMl = memory;
+
+if (whatTheyTyped.length > 0){
+document.getElementById("addtoB").disable = false
+document.getElementById("addtoM").disable = false
+document.getElementById("addtoE").disable = false
+}
+
+else {
+document.getElementById("addtoB").disable = true
+document.getElementById("addtoM").diable = true
+document.getElementById("addtoE").disable = true
+
+
+}
+
+}
+
+
+
+function addtoE() {
+whatTheyTyped = document.getElementById("letterinput").value;
+stringlength = whatTheyTyped.lenght;
+memory = memory + whatTheyTyped;
+document.getElementById("messagecenter").innerHTML = memory;
+
+if (whatTheyTyped.length > 0){
+document.getElementById("addtoB").disable = false
+document.getElementById("addtoM").disable = false
+document.getElementById("addtoE").disable = false
+}
+ 
+else {
+document.getElementById("addtoB").disable = true
+document.getElementById("addtoM").diable = true
+document.getElementById("addtoE").disable = true
+
+
+}
+
+}
+
+
+function deletefromB () {
+whatTheyTyped = document.getElementById("letterinput").value;
+memory = memory.substring(1);
+document.getElementById("messagecenter").innerHTML = memory;
+}
+
+
+function deletefromE (){
+whatTheyTyped = document.getElementById("letterinput").value;
+memory = memory.substring(0, memory.length - 1);
+document.getElementById("messagecenter").innerHTML = memory;
+}
+
+
+function charactercount () {
+whatTheyTyped = document.getElementById("letterinput").value;
+b = 0;
+
+for(let i=0; i<memory.length;   i++) {
+a = memory.substring(i,i+1) 
+
+    if (a == whatTheyTyped) 
+    
+    {b =b+1}
+{document.getElementById("messagecenter").innerHTML = whatTheyTyped + " was found " + b + " times" ;}
+}
+}
+
+function stringsearch () {
+whatTheyTyped = document.getElementById("letterinput").value;
+b = 0;
+
+for(let i=0; i<memory.length;   i++) {
+a = memory.substring(i,i+whatTheyTyped.length) 
+
+    if (a == whatTheyTyped) 
+    
+    {b =b+1; c = memory.substring(0,i); d = memory.substring(i+whatTheyTyped.length)}
+{document.getElementById("messagecenter").innerHTML = whatTheyTyped + " was found " + b + " before this there was " + c + " and after this there is "  + d;} 
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<body>
+
+<div class = "title"> </div>
+
+
+<div class = "letterinput"> 
+<input id = "letterinput">  
+
+
+</div>
+
+
+<div class = "addtoB"> 
+<button onclick = "addtoB ()"> Add to beginning</button>
+
+</div>
+
+
+<div class = "addtoM"> 
+<button onclick = "addtoM ()"> Add to middle</button>
+
+</div>
+
+
+<div class = "addtoE"> 
+<button onclick = "addtoE ()"> Add to ending</button>
+
+</div>
+
+
+<div class = "deletefromB"> 
+<button onclick = " deletefromB()"> Delete from beginning </button>
+
+</div>
+
+
+<div class = "deletefromM"> 
+<button onclick = ""> Delete from middle </button>
+
+</div>
+
+
+<div class = "deletefromE">  
+<button onclick = "deletefromE()"> Delete from ending</button>
+
+</div>
+
+
+<div class = "messagecenter"> 
+<p id = "messagecenter"> </p>
+
+</div>
+
+<div class = "charactercount">  
+<button onclick = "charactercount()"> Character Counter</button>
+
+</div>
+
+<div class = "stringsearch">
+<button onclick = "stringsearch()"> String Search </button>
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
